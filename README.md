@@ -3,7 +3,6 @@
 [![Built for VSCode](https://img.shields.io/badge/built%20for-VSCode-blue.svg)](https://code.visualstudio.com/)
 
 A VSCode extension for providing IDE-like "Go to Definition" and "Peek Definition" functionality for Epic Games' BuildGraph XML files.
-This extension parses the `<Include>` dependency tree to provide accurate, multi-file navigation for variables, macros, and includes.
 
 ## Features
 
@@ -13,7 +12,7 @@ This extension provides "Go to Definition" (F12) and "Peek Definition" (Alt+F12)
 * **Macros:** `Ctrl+Click` on an `<Expand Name="MyTestMacro"...>` tag to jump to the corresponding `<Macro Name="MyTestMacro"...>` definition.
 * **Includes:** `Ctrl+Click` on an `<Include Script="Foobar.xml"...>` to open the included file directly.
 
-The extension follows the `<Include>` dependency tree, ensuring that definitions are only searched for in relevant, included files.
+The extension follows the `<Include>` dependency tree, ensuring that definitions are searched for in all relevant, included files.
 
 ![Peek Definition](./images/peek.jpg)
 
@@ -54,7 +53,7 @@ This is the standard workflow for making changes and testing them live.
 
 ### Packaging
 
-When you're happy with your changes, you can package the extension into a single `.vsix` file to share with your team.
+When you're happy with your changes, you can package the extension into a `.vsix` file.
 
 1.  Open the extension's project folder in your terminal.
 2.  Run the package script:
