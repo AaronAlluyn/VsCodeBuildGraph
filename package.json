@@ -3,7 +3,7 @@
   "displayName": "vscode-buildgraph",
   "description": "buildgraph utils for vscode",
   "version": "0.0.1",
-  "license": "AGPL-3.0-only",
+  "license": "gpl-3.0-only",
   "repository": {
     "type": "git",
     "url": "https://github.com/AaronAlluyn/VsCodeBuildGraph"
