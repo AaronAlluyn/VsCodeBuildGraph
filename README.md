@@ -15,6 +15,8 @@ This extension provides "Go to Definition" (F12) and "Peek Definition" (Alt+F12)
 
 The extension follows the `<Include>` dependency tree, ensuring that definitions are only searched for in relevant, included files.
 
+![Peek Definition](./images/peek.jpg)
+
 ## Initial Setup
 
 This is the first-time setup you only need to do once after cloning the repository.
@@ -39,7 +41,7 @@ This is the standard workflow for making changes and testing them live.
 
 ## How to Package & Install
 
-When you're happy with your changes, you can package the extension into a single `.vsix` file to share with your team.
+When you're happy with your changes, you can package the extension into a `.vsix` file.
 
 ### To Package
 
