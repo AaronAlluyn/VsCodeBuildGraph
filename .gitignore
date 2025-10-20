@@ -1,0 +1,17 @@
+# Dependencies
+/node_modules
+
+# Build Output
+/out
+/dist
+
+# Packaged Extension
+*.vsix
+
+# Logs
+npm-debug.log*
+yarn-error.log
+
+# Operating System
+.DS_Store
+Thumbs.db
