@@ -15,7 +15,20 @@ This extension provides "Go to Definition" (F12) and "Peek Definition" (Alt+F12)
 
 The extension follows the `<Include>` dependency tree, ensuring that definitions are only searched for in relevant, included files.
 
-## Initial Setup
+## To Install the `.vsix` File
+
+You can install this `.vsix` file directly:
+
+1.  Open VSCode.
+2.  Go to the **Extensions** view (the sidebar icon).
+3.  Click the **`...`** (More Actions) menu at the top of the view.
+4.  Select **"Install from VSIX..."**
+5.  Choose the `.vsix` file you just built.
+6.  VSCode will install it and prompt you to reload.
+
+## Development
+
+### Initial Setup
 
 This is the first-time setup you only need to do once after cloning the repository.
 
@@ -25,7 +38,7 @@ This is the first-time setup you only need to do once after cloning the reposito
     ```
     This downloads all the project's development dependencies (like TypeScript and `vsce`) into the `node_modules` folder.
 
-## How to Modify & Test
+### Modifying & Testing
 
 This is the standard workflow for making changes and testing them live.
 
@@ -37,11 +50,9 @@ This is the standard workflow for making changes and testing them live.
     * Save your `.ts` file.
     * Reload the **[Extension Development Host]** window (go to its Command Palette with `Ctrl+Shift+P` and run `Developer: Reload Window`).
 
-## How to Package & Install
+### Packaging
 
 When you're happy with your changes, you can package the extension into a single `.vsix` file to share with your team.
-
-### To Package
 
 1.  Open the extension's project folder in your terminal.
 2.  Run the package script:
@@ -50,13 +61,3 @@ When you're happy with your changes, you can package the extension into a single
     ```
 3.  This will create a `.vsix` file in your root folder.
 
-### To Install the `.vsix` File
-
-You can install this `.vsix` file directly:
-
-1.  Open VSCode.
-2.  Go to the **Extensions** view (the sidebar icon).
-3.  Click the **`...`** (More Actions) menu at the top of the view.
-4.  Select **"Install from VSIX..."**
-5.  Choose the `.vsix` file you just built.
-6.  VSCode will install it and prompt you to reload.
