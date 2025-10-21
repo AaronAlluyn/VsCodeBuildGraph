@@ -81,7 +81,7 @@ This is the standard workflow for making changes and testing them live.
 
 ### Packaging
 
-When you're happy with your changes, you can package the extension into a single `.vsix` file to share with your team.
+When you're happy with your changes, you can package the extension into a `.vsix` file.
 
 1.  Open the extension's project folder in your terminal.
 2.  Run the package script:
