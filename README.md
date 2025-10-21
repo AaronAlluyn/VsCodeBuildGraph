@@ -2,20 +2,47 @@
 
 [![Built for VSCode](https://img.shields.io/badge/built%20for-VSCode-blue.svg)](https://code.visualstudio.com/)
 
-A VSCode extension for providing IDE-like "Go to Definition" and "Peek Definition" functionality for Epic Games' BuildGraph XML files.
-This extension parses the `<Include>` dependency tree to provide accurate, multi-file navigation for variables, macros, and includes.
+A VSCode extension for providing IDE-like functionality for Epic Games' BuildGraph XML files.
 
 ## Features
 
-This extension provides "Go to Definition" (F12) and "Peek Definition" (Alt+F12) for the following:
+### Go to/Peek Definition
 
 * **Variables:** `Ctrl+Click` on a variable like `$(Foobar)` to jump to its definition (`<Property Name="Foobar"...>`, `<Option Name="Foobar"...>`, `<EnvVar Name="Foobar"...>`, etc.).
 * **Macros:** `Ctrl+Click` on an `<Expand Name="MyTestMacro"...>` tag to jump to the corresponding `<Macro Name="MyTestMacro"...>` definition.
 * **Includes:** `Ctrl+Click` on an `<Include Script="Foobar.xml"...>` to open the included file directly.
 
 The extension follows the `<Include>` dependency tree, ensuring that definitions are only searched for in relevant, included files.
+ 
+ 
+<details>
+<summary>Show Screenshot</summary>
 
 ![Peek Definition](./images/peek.jpg)
+</details>
+
+### Document Outline
+
+* **Symbol List:** The Outline view shows a structured list of all elements with a `Name` attribute, such as `<Agent>`, `<Node>`, `<Macro>`, and `<Property>` tags.
+* **Easy Navigation:** Click any item in the Outline to jump directly to its definition in the file.
+* **Smart Icons:** Each element type is given a unique icon to make finding what you're looking for even easier.
+
+<details>
+<summary>Show Screenshot</summary>
+
+![Outline Preview](./images/outliner.jpg)
+</details>
+
+### Rich Tooltips (Hover)
+
+* **Variables & Macros:** Hover over a variable like `$(Foobar)` or an `<Expand Name="MyMacro">` tag to see its full definition line in a convenient popup.
+* **Includes:** Hover over an `<Include Script="Foobar.xml">` tag to see the name of the file it points to.
+
+<details>
+<summary>Show Screenshot</summary>
+
+![Tooltip Preview](./images/tooltip.jpg)
+</details>
 
 ## To Install the `.vsix` File
 
