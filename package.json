@@ -2,7 +2,7 @@
   "name": "vscode-buildgraph",
   "displayName": "vscode-buildgraph",
   "description": "buildgraph utils for vscode",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "license": "AGPL-3.0-only",
   "repository": {
     "type": "git",
@@ -19,12 +19,26 @@
   ],
   "main": "./out/extension.js",
   "contributes": {
-    "commands": [
+    "semanticTokenTypes": [
       {
-        "command": "vscode-buildgraph.helloWorld",
-        "title": "Hello World"
+        "id": "buildGraphVariable",
+        "superType": "variable",
+        "description": "A $(Variable) in a BuildGraph file."
+      },
+      {
+        "id": "buildGraphTag",
+        "superType": "macro",
+        "description": "A #Tag in a BuildGraph file."
       }
-    ]
+    ],
+    "configurationDefaults": {
+            "editor.semanticTokenColorCustomizations": {
+                "rules": {
+                    "buildGraphVariable": "#cb7d7b",
+                    "buildGraphTag": "#cb7d7b"
+                }
+            }
+        }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",

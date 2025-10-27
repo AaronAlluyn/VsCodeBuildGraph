@@ -2,6 +2,7 @@ import * as vscode from 'vscode';
 import { BuildGraphDefinitionProvider } from './providers/definitionProvider';
 import { BuildGraphHoverProvider } from './providers/hoverProvider';
 import { BuildGraphDocumentSymbolProvider } from './providers/symbolProvider';
+import { BuildGraphSemanticTokenProvider, legend } from './providers/tokenProvider';
 
 const XML_SELECTOR = { language: 'xml' };
 
@@ -29,6 +30,15 @@ export function activate(context: vscode.ExtensionContext) {
         vscode.languages.registerDocumentSymbolProvider(
             XML_SELECTOR,
             new BuildGraphDocumentSymbolProvider()
+        )
+    );
+
+    // Register Semantic Token Provider
+    context.subscriptions.push(
+        vscode.languages.registerDocumentSemanticTokensProvider(
+            XML_SELECTOR, 
+            new BuildGraphSemanticTokenProvider(), 
+            legend
         )
     );
 }
