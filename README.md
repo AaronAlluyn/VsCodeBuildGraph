@@ -44,6 +44,28 @@ The extension follows the `<Include>` dependency tree, ensuring that definitions
 ![Tooltip Preview](./images/tooltip.jpg)
 </details>
 
+### Syntax Highlighting
+
+* **Variables & Tags:** variables like `$(Foobar)` or `#EditorBinaries` file tags are highlighted to distinguish them further from static strings.
+
+These colours can be configured through the `settings.json`:
+```
+{
+    "editor.semanticTokenColorCustomizations": {
+      "rules": {
+        "buildGraphTag": "#cb7d7b",
+        "buildGraphVariable": "#cb7d7b"
+    }
+  }
+}
+```
+
+<details>
+<summary>Show Screenshot</summary>
+
+![Tooltip Preview](./images/highlights.jpg)
+</details>
+
 ## To Install the `.vsix` File
 
 You can install this `.vsix` file directly:
