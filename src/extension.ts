@@ -3,6 +3,7 @@ import { BuildGraphDefinitionProvider } from './providers/definitionProvider';
 import { BuildGraphHoverProvider } from './providers/hoverProvider';
 import { BuildGraphDocumentSymbolProvider } from './providers/symbolProvider';
 import { BuildGraphSemanticTokenProvider, legend } from './providers/tokenProvider';
+import { BuildGraphCommandProvider } from './providers/commandProvider';
 
 const XML_SELECTOR = { language: 'xml' };
 
@@ -39,6 +40,23 @@ export function activate(context: vscode.ExtensionContext) {
             XML_SELECTOR, 
             new BuildGraphSemanticTokenProvider(), 
             legend
+        )
+    );
+
+    // Register Command Handler
+    const commandHandler = new BuildGraphCommandProvider();
+    context.subscriptions.push(
+        vscode.commands.registerTextEditorCommand(
+            'vscode-buildgraph.runTarget', 
+            commandHandler.runTarget,
+            commandHandler
+        )
+    );
+    context.subscriptions.push(
+        vscode.commands.registerTextEditorCommand(
+            'vscode-buildgraph.runTargetListOnly', 
+            commandHandler.runTargetListOnly,
+            commandHandler
         )
     );
 }

@@ -19,6 +19,41 @@
   ],
   "main": "./out/extension.js",
   "contributes": {
+    "commands": [
+      {
+        "command": "vscode-buildgraph.runTarget",
+        "title": "Run Target"
+      },
+      {
+        "command": "vscode-buildgraph.runTargetListOnly",
+        "title": "Run Target (List Only)"
+      }
+    ],
+    "submenus": [
+      {
+        "id": "buildgraph.context.submenu",
+        "label": "BuildGraph"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "when": "editorLangId == xml",
+          "submenu": "buildgraph.context.submenu",
+          "group": "navigation"
+        }
+      ],
+      "buildgraph.context.submenu": [
+        {
+          "command": "vscode-buildgraph.runTarget",
+          "group": "1_run@1"
+        },
+        {
+          "command": "vscode-buildgraph.runTargetListOnly",
+          "group": "1_run@2"
+        }
+      ]
+    },
     "semanticTokenTypes": [
       {
         "id": "buildGraphVariable",

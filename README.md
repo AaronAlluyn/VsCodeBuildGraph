@@ -66,6 +66,19 @@ These colours can be configured through the `settings.json`:
 ![Tooltip Preview](./images/highlights.jpg)
 </details>
 
+### Unreal Automation Tool
+
+* **Context Menu:** Right-click on any line containing a `<Node Name="...">` or `<Aggregate Name="...">` tag to access the **"BuildGraph"** submenu.
+* **Run Targets:** Execute the **"Run Target"** or **"Run Target (List Only)"** command for the selected node directly from the editor.
+* **Automatic Discovery:** The extension automatically searches parent directories to find the `RunUAT.bat` script, allowing you to run commands from any XML file within your unreal project.
+* **Integrated Terminal:** All commands are built and executed in VSCode's integrated terminal.
+
+<details>
+<summary>Show Screenshot</summary>
+
+![Tooltip Preview](./images/uat.jpg)
+</details>
+
 ## To Install the `.vsix` File
 
 You can install this `.vsix` file directly:
