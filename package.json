@@ -27,6 +27,10 @@
       {
         "command": "vscode-buildgraph.runTargetListOnly",
         "title": "Run Target (List Only)"
+      },
+      {
+        "command": "vscode-buildgraph.copyUatCommandline",
+        "title": "Copy UAT commandline"
       }
     ],
     "submenus": [
@@ -51,6 +55,10 @@
         {
           "command": "vscode-buildgraph.runTargetListOnly",
           "group": "1_run@2"
+        },
+        {
+          "command": "vscode-buildgraph.copyUatCommandline",
+          "group": "2_copy@1"
         }
       ]
     },

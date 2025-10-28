@@ -59,6 +59,13 @@ export function activate(context: vscode.ExtensionContext) {
             commandHandler
         )
     );
+    context.subscriptions.push(
+        vscode.commands.registerTextEditorCommand(
+            'vscode-buildgraph.copyUatCommandline', 
+            commandHandler.copyUatCommandline,
+            commandHandler
+        )
+    );
 }
 
 export function deactivate() { 
