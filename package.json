@@ -2,7 +2,7 @@
   "name": "vscode-buildgraph",
   "displayName": "vscode-buildgraph",
   "description": "buildgraph utils for vscode",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "license": "AGPL-3.0-only",
   "repository": {
     "type": "git",
