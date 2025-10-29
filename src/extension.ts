@@ -43,8 +43,9 @@ export function activate(context: vscode.ExtensionContext) {
         )
     );
 
-    // Register Command Handler
     const commandHandler = new BuildGraphCommandProvider();
+    
+    // Register "Run BuildGraph Target" (Quick Pick)
     context.subscriptions.push(
         vscode.commands.registerTextEditorCommand(
             'vscode-buildgraph.runTarget', 
@@ -52,13 +53,17 @@ export function activate(context: vscode.ExtensionContext) {
             commandHandler
         )
     );
+    
+    // Register "Run BuildGraph (ListOnly)" (no target)
     context.subscriptions.push(
         vscode.commands.registerTextEditorCommand(
-            'vscode-buildgraph.runTargetListOnly', 
-            commandHandler.runTargetListOnly,
+            'vscode-buildgraph.runListOnly', 
+            commandHandler.runListOnly,
             commandHandler
         )
     );
+
+    // Register "Copy UAT commandline"
     context.subscriptions.push(
         vscode.commands.registerTextEditorCommand(
             'vscode-buildgraph.copyUatCommandline', 

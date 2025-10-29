@@ -21,12 +21,12 @@
   "contributes": {
     "commands": [
       {
-        "command": "vscode-buildgraph.runTarget",
-        "title": "Run Target"
+        "command": "vscode-buildgraph.runListOnly",
+        "title": "Run BuildGraph (ListOnly)"
       },
       {
-        "command": "vscode-buildgraph.runTargetListOnly",
-        "title": "Run Target (List Only)"
+        "command": "vscode-buildgraph.runTarget",
+        "title": "Run BuildGraph Target"
       },
       {
         "command": "vscode-buildgraph.copyUatCommandline",
@@ -49,11 +49,11 @@
       ],
       "buildgraph.context.submenu": [
         {
-          "command": "vscode-buildgraph.runTarget",
+          "command": "vscode-buildgraph.runListOnly",
           "group": "1_run@1"
         },
         {
-          "command": "vscode-buildgraph.runTargetListOnly",
+          "command": "vscode-buildgraph.runTarget",
           "group": "1_run@2"
         },
         {
