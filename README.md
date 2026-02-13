@@ -1,6 +1,7 @@
 # BuildGraph for VSCode
 
-[![Built for VSCode](https://img.shields.io/badge/built%20for-VSCode-blue.svg)](https://code.visualstudio.com/)
+[![Visual Studio Marketplace Version](https://img.shields.io/visual-studio-marketplace/v/AaronAlluyn.vscode-buildgraph)](https://marketplace.visualstudio.com/items?itemName=AaronAlluyn.vscode-buildgraph)
+[![Visual Studio Marketplace Installs](https://img.shields.io/visual-studio-marketplace/i/AaronAlluyn.vscode-buildgraph)](https://marketplace.visualstudio.com/items?itemName=AaronAlluyn.vscode-buildgraph)
 
 A VSCode extension for providing IDE-like functionality for Epic Games' BuildGraph XML files.
 
