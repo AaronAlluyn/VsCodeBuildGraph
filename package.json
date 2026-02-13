@@ -99,6 +99,6 @@
     "@typescript-eslint/parser": "^8.45.0",
     "eslint": "^9.36.0",
     "typescript": "^5.9.3",
-    "vsce": "^2.15.0"
+    "@vscode/vsce": "^3.2.1"
   }
 }
