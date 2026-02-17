@@ -26,8 +26,10 @@ export class BuildGraphDocumentSymbolProvider implements vscode.DocumentSymbolPr
         // 2. Optionally, the content of a Name="...' attribute (match[3])
         // 3. If it's self-closing (match[4])
         // 4. Closing tags (match[5])
-        const regex = /<(\w+)([^>]*?\sName="([^"]+)")?[^>]*?(\/?)>|<\/(\w+)>/gi;
+        // 5. Start and end of XML comments (match[6])
+        const regex = /<(\w+)([^>]*?Name\s*=\s*"([^"]+)")?[^>]*?(\/?)>|<\/(\w+)\s*>|(<!--|-->)/gi;
         let match;
+        let withinComment = false;
 
         while ((match = regex.exec(text))) {
             if (token.isCancellationRequested) {
@@ -38,6 +40,19 @@ export class BuildGraphDocumentSymbolProvider implements vscode.DocumentSymbolPr
             const nameValue = match[3];
             const isSelfClosing = match[4] === '/';
             const closingTagName = match[5];
+            const isCommentStart = match[6] === '<!--';
+            const isCommentEnd = match[6] === '-->';
+
+            if (withinComment) {
+                if (isCommentEnd) {
+                    withinComment = false;
+                }
+                continue;
+            }
+            if (isCommentStart) {
+                withinComment = true;
+                continue;
+            }
 
             let currentParent = parentStack.length > 0 ? parentStack[parentStack.length - 1] : undefined;
 
@@ -48,8 +63,10 @@ export class BuildGraphDocumentSymbolProvider implements vscode.DocumentSymbolPr
                     continue;
                 }
 
-                const tagRangeStartPos = document.positionAt(match.index);
-                const fullLineRange = document.lineAt(tagRangeStartPos.line).range;
+                const tagRange = new vscode.Range(
+                    document.positionAt(match.index),
+                    document.positionAt(match.index + match[0].length)
+                );
                 
                 // Use the Name="..." value as the display name, or the tag name if no Name
                 const displayName = nameValue || openingTagName;
@@ -76,7 +93,7 @@ export class BuildGraphDocumentSymbolProvider implements vscode.DocumentSymbolPr
                     displayName, 
                     openingTagName,
                     kind, 
-                    fullLineRange, 
+                    tagRange,
                     selectionRange
                 );
                 
@@ -105,9 +122,8 @@ export class BuildGraphDocumentSymbolProvider implements vscode.DocumentSymbolPr
             } else if (closingTagName) {
                 currentParent = parentStack.length > 0 ? parentStack[parentStack.length - 1] : undefined;
                 if (currentParent && currentParent.detail.toLowerCase() === closingTagName.toLowerCase()) {
-                    const closingTagPosition = document.positionAt(match.index);
-                    const closingTagLineRange = document.lineAt(closingTagPosition.line).range;
-                    currentParent.range = new vscode.Range(currentParent.range.start, closingTagLineRange.end);
+                    const closingTagEndPosition = document.positionAt(match.index + match[0].length);
+                    currentParent.range = new vscode.Range(currentParent.range.start, closingTagEndPosition);
                     
                     parentStack.pop();
                 }
@@ -131,8 +147,10 @@ export class BuildGraphDocumentSymbolProvider implements vscode.DocumentSymbolPr
             }
             
             const relativePath = includeMatch[1];
-            const tagRangeStartPos = document.positionAt(includeMatch.index);
-            const fullLineRange = document.lineAt(tagRangeStartPos.line).range;
+            const tagRange = new vscode.Range(
+                document.positionAt(includeMatch.index),
+                document.positionAt(includeMatch.index + includeMatch[0].length)
+            );
 
             const pathIndexInMatch = includeMatch[0].indexOf(relativePath);
             const pathStartIndex = includeMatch.index + pathIndexInMatch;
@@ -145,7 +163,7 @@ export class BuildGraphDocumentSymbolProvider implements vscode.DocumentSymbolPr
                 path.basename(relativePath), 
                 "Include", 
                 vscode.SymbolKind.Module,
-                fullLineRange, 
+                tagRange, 
                 selectionRange
             );
             
